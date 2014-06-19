@@ -10,17 +10,31 @@
 		<title>Manage Your Time</title>
 	</head>
 	<body>
+		<h1>Welcome <span id="userName"></span></h1>
+		<div id="infoContainer">
+			<h3>Point System</h3>
+			<p>You may earn points or time by performing verious chores or by doing something educational. How much time or points you earn is dependent on your administrator. Based on your work they will determine how much to give you. They are other tasks which have default values and are described below.</p>
+			<h4>Default Points</h4>
+			<ul>
+				<li>Waking up before 7:00 AM: 30 minutes or 10 points</li>
+				<li>Going to bed before 9:00 PM: 30 minutes or 10 points</li>
+				<li>Brushing you teeth(twice per day): 5 minutes or 2 points</li>
+				<li>Taking a bath or shower(once per day): 5 minutes or 2 points</li>
+				<li>Earning more than 500 points in one week(once per week): 1 hour or 50 points</li>
+				<li>Getting this weeks High Score(once per week): 3 hours</li>
+			</ul>
+		</div>
 		<div id="clockContainer">
 			<h5>Time Remaining</h5>
 			<div id="timeRemaining">00:00:00</div>
+			<button id="playButton" disabled="disabled">Play</button>
+			<button id="pauseButton" disabled="disabled">Pause</button>
+			<button id="resetButton">Reset</button>
+			<br>
+			<input id="minutesToAdd" type="text">
+			<button id="addTime">Add Time</button>
+			<br>
 		</div>
-
-		<button id="playButton" disabled="disabled">Play</button>
-		<button id="pauseButton" disabled="disabled">Pause</button>
-		<button id="resetButton">Reset</button>
-
-		<br>
-		<input id="minutesToAdd" type="text">
-		<button id="addTime">Add Time</button>
+		<button id="signIn">Sign in</button>
 	</body>
 </html>
