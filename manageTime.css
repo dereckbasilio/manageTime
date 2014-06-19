@@ -1,12 +1,48 @@
 div{
 	border: 1px solid black;
 	font-size: 50px;
+}
+
+h1, h2, h3, h4, h5, h6, p{
 	text-align: center;
 }
+
 h5{
 	margin: 10px 0px;
 }
+
+ul{
+	list-style-type: none;
+}
+
+li{
+	margin: 3px 0px;
+}
+
 #clockContainer{
 	width: 500px;
-	height: 250px;
+	text-align: center;
+}
+
+#infoContainer{
+	width: 500px;
+	font-size: 15px;
+}
+
+#timeRemaining{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+button{
+	background-color: lightgreen;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+button:disabled{
+	background-color: #FF5050;
+}
+
+body{
+	font-family: "Times New Roman", Times, serif;
 }
