@@ -44,6 +44,7 @@ $(document).ready(function() {
 		$("#pauseButton").removeAttr("disabled");
 
 		$("#addTime").attr("disabled", "disabled");
+		$("#timeRemaining").addClass("startTime").removeClass("pauseTime");
 	});
 
 	$("#pauseButton").click(function(){
@@ -52,6 +53,7 @@ $(document).ready(function() {
 		$("#playButton").removeAttr("disabled");
 
 		$("#addTime").removeAttr("disabled");
+		$("#timeRemaining").addClass("pauseTime").removeClass("startTime");
 	});
 
 	$("#addTime").click(function(){
@@ -69,7 +71,7 @@ $(document).ready(function() {
 			if(seconds >= 60){
 				tempMin = Math.floor(seconds / 60);
 				seconds = seconds - (tempMin*60);
-				console.log(seconds);
+				minutes += tempMin;
 			}
 			if(minutes >= 60){
 				tempHour = Math.floor(minutes / 60);
@@ -95,10 +97,18 @@ $(document).ready(function() {
 		$("#pauseButton").attr("disabled", "disabled");
 		$("#playButton").attr("disabled", "disabled");
 		$("#addTime").removeAttr("disabled");
-
+		$("#timeRemaining").addClass("pauseTime").removeClass("startTime");
 	});
 
 	setInterval(function() {
+		if(hours === 0 && minutes === 0 && seconds === 0){
+			stopNow = true;
+			$("#timeRemaining").html("00:00:00");
+			$("#timeRemaining").addClass("pauseTime").removeClass("startTime");
+			$("#playButton").attr("disabled", "disabled");
+			$("#addTime").removeAttr("disabled");
+		}
+
 		if(!stopNow){
 			$("#timeRemaining").html((hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds));
 			if(seconds === 0){
@@ -113,6 +123,5 @@ $(document).ready(function() {
 				seconds--;
 			}
 		}
-		if(hours === 0 && minutes === 0 && seconds === 0) $("#playButton").attr("disabled", "disabled");
 	}, 1000);
 });
