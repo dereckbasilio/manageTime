@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 	setCookie = function(cname, cvalue) {
 		document.cookie = cname + "=" + cvalue + ";";
-	}
+	};
 	
 	getCookie = function(cname) {
 		var name = cname + "=";
@@ -22,24 +22,42 @@ $(document).ready(function() {
 			if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
 		}
 	    return "Not Found";
-	}
+	};
+
+	createUser = function(userName, password){
+		setCookie("userName",userName);
+		setCookie("password",password);
+	};
+
+	$("#signIn").click(function(){
+		var userName = prompt("Please enter a user name.");
+		var password = prompt("Please enter a password.");
+
+		createUser(userName, password);
+
+		$("#userName").html(getCookie("userName"));
+	});
 
 	$("#playButton").click(function(){
 		stopNow = false;
 		$("#playButton").attr("disabled", "disabled");
 		$("#pauseButton").removeAttr("disabled");
+
+		$("#addTime").attr("disabled", "disabled");
 	});
 
 	$("#pauseButton").click(function(){
 		stopNow = true;
 		$("#pauseButton").attr("disabled", "disabled");
 		$("#playButton").removeAttr("disabled");
+
+		$("#addTime").removeAttr("disabled");
 	});
 
 	$("#addTime").click(function(){
 		var reg = new RegExp("[0-9][0-9]:[0-9][0-9]:[0-9][0-9]");
 
-		if($("#pauseButton").attr("disabled") === "disabled" && reg.test($("#minutesToAdd").val())){
+		if(reg.test($("#minutesToAdd").val())){
 			var timeToAdd = $("#minutesToAdd").val().split(":");
 
 			$("#playButton").removeAttr("disabled");
@@ -63,7 +81,7 @@ $(document).ready(function() {
 			$("#minutesToAdd").val("");
 		}
 		else{
-			alert("Please pause the timer before adding.\nAnd ensure that your time is in the right format.");
+			alert("Please ensure that your time is in the following format.\n00:00:00");
 		}
 	});
 
@@ -76,6 +94,7 @@ $(document).ready(function() {
 		$("#timeRemaining").html("00:00:00");
 		$("#pauseButton").attr("disabled", "disabled");
 		$("#playButton").attr("disabled", "disabled");
+		$("#addTime").removeAttr("disabled");
 
 	});
 
