@@ -1,5 +1,6 @@
 div{
-	border: 1px solid black;
+	border-color: black;
+	border-style: solid;
 	font-size: 50px;
 }
 
@@ -13,24 +14,54 @@ h5{
 
 ul{
 	list-style-type: none;
+	margin: 10px 3px;
+	padding: 0px;
+	text-align: left;
+}
+
+li span{
+	float: right;
 }
 
 li{
-	margin: 3px 0px;
+	margin: 4px 0px;
 }
 
 #clockContainer{
 	width: 500px;
 	text-align: center;
+	border-width: 1px;
+	float: left;
+	margin: 0px 3px;
 }
 
 #infoContainer{
 	width: 500px;
 	font-size: 15px;
+	border-width: 1px;
+	text-align: center;
+	float: left;
 }
 
 #timeRemaining{
 	font-family: "Comic Sans MS", cursive, sans-serif;
+	margin: 10px auto;
+	border-width: 1px;
+	width: 250px;
+}
+
+.startTime{
+	background-color: #E0E0EB;
+	color: black;
+}
+
+.pauseTime{
+	background-color: #929293;
+	color: #E0E0EB;
+}
+
+#signIn{
+	float: right;
 }
 
 button{
